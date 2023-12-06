@@ -8,6 +8,7 @@ networks:
 services:
   web:
     image: nginx:1.25.3
+    container_name: web
     ports:
       - 80:80
       - 443:443
@@ -20,7 +21,12 @@ services:
     environment:
       TZ: Asia/Shanghai
   php:
-    image: php:8.2-fpm
+    # image: php:8.2-fpm
+    build:
+      context: .
+      dockerfile: Phpdockerfile
+    image: php:8.2fpm-composer-node-npm
+    container_name: php82
     volumes: 
       - ./apps:/home/www/apps
     environment:

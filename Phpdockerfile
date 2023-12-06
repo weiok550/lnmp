@@ -1,0 +1,23 @@
+FROM php:8.2-fpm
+
+# 安装常用工具和依赖
+RUN apt-get update && apt-get install -y \
+    git \
+    zip \
+    unzip \
+    && rm -rf /var/lib/apt/lists/*
+
+# 安装 Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# 安装 Node.js 和 npm
+RUN curl -sL https://deb.nodesource.com/setup_20.x -o nodesource_setup.sh
+RUN bash nodesource_setup.sh
+RUN apt-get install -y nodejs
+
+RUN composer global require laravel/installer
+RUN npm install -g vite
+
+
+# 设置工作目录
+WORKDIR /home/www/apps
