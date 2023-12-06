@@ -1,0 +1,9 @@
+.DS_Store
+.idea
+.vscode
+.log
+*/data/*
+*/logs/*
+.DS_Store
+*.log
+apps/*
