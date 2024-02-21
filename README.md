@@ -15,7 +15,8 @@
         - npm
     - mysql 5.7
     - redis 7.2
-
+适用场景：
+    - 小型php项目（laravel）
 
 ```
 ### 0. 准备工作
